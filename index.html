@@ -7,30 +7,31 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://use.typekit.net/jva5hqf.css">
 </head>
-    <body>
-        <header>
-            <h1>Koffiemaker</h1>
-                <p>level 1 beginner</p>
-                    <img src="images/levelBalk/xpbalk0punten.JPG" alt="xp balk met 0 punten">
-        </header>
+<body>
+    <header>
+        <h1>Koffiemaker</h1>
+        <p id="niveauTekst">level 1 beginner</p>
+        <img id="niveauBalk" src="images/levelBalk/xpbalk0punten.JPG" alt="xp balk met 0 punten">
+    </header>
 
-        <main class="hoofdpagina">
-            <section>
-                <h2>Bestelling</h2>
-                    <p><img src="images/Costumer.JPG" alt="Klant met vraag voor koffie"></p>
-                    <p>budget 0.60</p>
-            </section>
- 
-            <section>
-                <p>Je hebt nog genoeg budget!</p>
-                    <div>
-                <p><img src="./images/Koffieleeg.JPG" alt="Koffiemok is leeg"></p>
-                    </div>
-                        <button id="Gamebutton">start</button>
-                        <button id="MelkToevoegen">melk toevoegen</button>
-                        <button id="GevenAanKlant">geven aan klant</button>
-                    </section>
-                </main>
-            <script src="./js/index.js"></script>
-    </body>
+    <main class="hoofdpagina">
+        <section>
+            <h2>Bestelling</h2>
+            <img id="klantAfbeelding" src="images/Costumer.JPG" alt="Klant met vraag voor koffie">
+            <p id="klantBudget">budget 0.60</p>
+        </section>
+
+        <section>
+            <p>Je hebt nog genoeg budget!</p>
+            <div>
+                <img id="koffieAfbeelding" src="./images/Koffieleeg.JPG" alt="Koffiemok is leeg">
+            </div>
+            <button id="spelKnop">start</button>
+            <button id="melkKnop">melk toevoegen</button>
+            <button id="serveerKnop">geven aan klant</button>
+        </section>
+    </main>
+    <script src="./js/index.js"></script>
+</body>
 </html>
+
