@@ -1,10 +1,12 @@
-console.log("hallo wereld");
+console.log("hallo wereld")
+
+// Geluidsbestand voor het schenken van koffie
+const schenkGeluid = new Audio('sounds/pourCoffee.mp3'); // https://developer.mozilla.org/en-US/docs/Web/API/AudioContext & audio van rechtvrije website https://pixabay.com/
 
 // Elementen selecteren met behulp van querySelector
 const spelKnop = document.querySelector("#spelKnop")
 const melkKnop = document.querySelector("#melkKnop")
 const serveerKnop = document.querySelector("#serveerKnop")
-const schenkGeluid = new Audio('sounds/pourCoffee.mp3') 
 const niveauBalk = document.querySelector('#niveauBalk')
 const koffieAfbeelding = document.querySelector("#koffieAfbeelding")
 const klantAfbeelding = document.querySelector("#klantAfbeelding")
@@ -89,9 +91,4 @@ serveerKnop.addEventListener("click", function () {
 // https://www.w3schools.com/jsref/met_audio_play.asp audio code
 //https://www.w3schools.com/jsref/prop_style_display.asp style code
 // audio van rechtvrije website https://pixabay.com/
-
-
-
-//document.querySelector(".hoofdpagina section:last-of-type img").src = 'images/' + 'Koffiemetmelk.JPG';
-
 
