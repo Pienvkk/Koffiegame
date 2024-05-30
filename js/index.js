@@ -1,9 +1,11 @@
 console.log("hallo wereld")
 
 // Geluidsbestand voor het schenken van koffie
-const schenkGeluid = new Audio('sounds/pourCoffee.mp3'); // https://developer.mozilla.org/en-US/docs/Web/API/AudioContext & audio van rechtvrije website https://pixabay.com/
+// bron -> https://developer.mozilla.org/en-US/docs/Web/API/AudioContext & audio van rechtvrije website https://pixabay.com/ <- bron
+const schenkGeluid = new Audio('sounds/pourCoffee.mp3') 
 
-// Elementen selecteren met behulp van querySelector
+
+// Geselecteerde elementen
 const spelKnop = document.querySelector("#spelKnop")
 const melkKnop = document.querySelector("#melkKnop")
 const serveerKnop = document.querySelector("#serveerKnop")
@@ -12,50 +14,53 @@ const koffieAfbeelding = document.querySelector("#koffieAfbeelding")
 const klantAfbeelding = document.querySelector("#klantAfbeelding")
 const klantBudget = document.querySelector("#klantBudget")
 const niveauTekst = document.querySelector("#niveauTekst")
+const baristaTekst = document.querySelector ("#barista")
 
-let koffieAfbeeldingen = ['images/Koffie.JPG', 'images/KoffieMetMelk.JPG', 'images/KoffieLeeg.JPG']
-let klantAfbeeldingen = ['images/costumerBoos.JPG', 'images/costumerBlij.JPG']
-let niveauAfbeeldingen = ['images/levelBalk/xpbalk20punten.JPG', 'images/levelBalk/xpbalk80punten.JPG', 'images/levelBalk/xpbalkLevel2.JPG']
-
+// Variabele voor budget & levelbalk afbeeldingen
+let klantGeld = 9
+let niveauAfbeeldingen = ['images/levelBalk/xpbalk20punten.JPG', 'images/levelBalk/xpbalk60punten.JPG', 'images/levelBalk/xpbalkLevel2.JPG']
+ 
 // Functie om melk toevoegen knop te tonen
 function toonMelkToevoegen() {
-  koffieAfbeelding.src = koffieAfbeeldingen[0]
-  niveauBalk.src = niveauAfbeeldingen [0]
+  koffieAfbeelding.src = 'images/Koffie.JPG'
+  niveauBalk.src = niveauAfbeeldingen[0]
   melkKnop.style.display = "inline"
   spelKnop.style.display = "none"
   serveerKnop.style.display = "none"
+  klantGeld = klantGeld - 3 
+  klantBudget.textContent = (Math.round (klantGeld)) 
 }
 
 // Functie om melk toe te voegen aan de koffie
 function voegMelkToe() {
-  koffieAfbeelding.src = koffieAfbeeldingen[1]
-  niveauBalk.src = niveauAfbeeldingen [1]
-  niveauBalk.src = 'images/levelBalk/xpbalk60punten.JPG'
+  koffieAfbeelding.src = 'images/KoffieMetMelk.JPG'
+  niveauBalk.src = niveauAfbeeldingen[1]
   melkKnop.style.display = "none"
   serveerKnop.style.display = "inline"
+  klantGeld = klantGeld - 6
+  klantBudget.textContent = (Math.round (klantGeld))
 }
 
 // Functie om de koffie aan de klant te serveren
 function geefAanKlant() {
-  koffieAfbeelding.src = koffieAfbeeldingen[2]
-  klantAfbeelding.src = klantAfbeeldingen[1]
-  niveauBalk.src = niveauAfbeeldingen [2]
+  koffieAfbeelding.src = 'images/KoffieLeeg.JPG'
+  klantAfbeelding.src = 'images/costumerBlij.JPG'
+  niveauBalk.src = niveauAfbeeldingen[2]
   serveerKnop.style.display = "inline"
 }
 
-// Functie om het klantbudget bij te werken
+// Functie om het budget controleren
 function updateBudget() {
-  if (klantBudget.textContent === "budget 0.20" || klantBudget.textContent === "budget 0.40" || klantBudget.textContent === "budget 0.60") {
-    baristaTekst.textContent = 'Je hebt nog genoeg budget!'
+  if (klantGeld > 0) { 
+      baristaTekst.textContent = "Je hebt genoeg budget!"
   } else {
-    baristaTekst.textContent = 'Je budget is op!'
+      baristaTekst.textContent = "Helaas, je budget is op!"
   }
 }
 
 // Eventlistener voor de startknop
 spelKnop.addEventListener("click", function () {
   if (spelKnop.textContent === "start") {
-    klantBudget.textContent = "budget 0.40"
     schenkGeluid.play()
     toonMelkToevoegen()
     updateBudget()
@@ -65,18 +70,16 @@ spelKnop.addEventListener("click", function () {
 // Eventlistener voor de melk toevoegen knop
 melkKnop.addEventListener("click", function () {
   if (melkKnop.textContent === "melk toevoegen") {
-    klantBudget.textContent = "budget 0.20"
     schenkGeluid.play()
     voegMelkToe()
     updateBudget()
   }
-});
+})
 
 // Eventlistener voor de serveer knop
 serveerKnop.addEventListener("click", function () {
   if (serveerKnop.textContent === "geven aan klant") {
     niveauTekst.textContent = "level 2 ervaringsdeskundige"
-    klantBudget.textContent = "budget 0"
     geefAanKlant()
     updateBudget()
   }
