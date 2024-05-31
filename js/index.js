@@ -1,3 +1,4 @@
+// Check Java Koppeling
 console.log("hallo wereld")
 
 // Geluidsbestand voor het schenken van koffie
@@ -6,7 +7,7 @@ const schenkGeluid = new Audio('sounds/pourCoffee.mp3')
 
 
 // Geselecteerde elementen
-const spelKnop = document.querySelector("#spelKnop")
+const startKnop = document.querySelector("#spelKnop")
 const melkKnop = document.querySelector("#melkKnop")
 const serveerKnop = document.querySelector("#serveerKnop")
 const niveauBalk = document.querySelector('#niveauBalk')
@@ -21,24 +22,24 @@ let klantGeld = 9
 let niveauAfbeeldingen = ['images/levelBalk/xpbalk20punten.JPG', 'images/levelBalk/xpbalk60punten.JPG', 'images/levelBalk/xpbalkLevel2.JPG']
  
 // Functie om melk toevoegen knop te tonen
-function toonMelkToevoegen() {
+function voegKoffieToe() {
   koffieAfbeelding.src = 'images/Koffie.JPG'
   niveauBalk.src = niveauAfbeeldingen[0]
-  melkKnop.style.display = "inline"
-  spelKnop.style.display = "none"
+  melkKnop.style.display = "inline"   // bron -> https://www.w3schools.com/jsref/prop_style_display.asp style code
+  startKnop.style.display = "none"
   serveerKnop.style.display = "none"
   klantGeld = klantGeld - 3 
-  klantBudget.textContent = (Math.round (klantGeld)) 
+  klantBudget.textContent = klantGeld
 }
 
 // Functie om melk toe te voegen aan de koffie
 function voegMelkToe() {
   koffieAfbeelding.src = 'images/KoffieMetMelk.JPG'
   niveauBalk.src = niveauAfbeeldingen[1]
-  melkKnop.style.display = "none"
+  melkKnop.style.display = "none"  // bron -> https://www.w3schools.com/jsref/prop_style_display.asp style code
   serveerKnop.style.display = "inline"
   klantGeld = klantGeld - 6
-  klantBudget.textContent = (Math.round (klantGeld))
+  klantBudget.textContent = klantGeld
 }
 
 // Functie om de koffie aan de klant te serveren
@@ -46,7 +47,7 @@ function geefAanKlant() {
   koffieAfbeelding.src = 'images/KoffieLeeg.JPG'
   klantAfbeelding.src = 'images/costumerBlij.JPG'
   niveauBalk.src = niveauAfbeeldingen[2]
-  serveerKnop.style.display = "inline"
+  serveerKnop.style.display = "inline"  // bron -> https://www.w3schools.com/jsref/prop_style_display.asp style code
 }
 
 // Functie om het budget controleren
@@ -59,13 +60,13 @@ function updateBudget() {
 }
 
 // Eventlistener voor de startknop
-spelKnop.addEventListener("click", function () {
-  if (spelKnop.textContent === "start") {
+startKnop.addEventListener("click", function () {
+  if (startKnop.textContent === "start") {
     schenkGeluid.play()
-    toonMelkToevoegen()
+    voegKoffieToe()
     updateBudget()
   }
-});
+})
 
 // Eventlistener voor de melk toevoegen knop
 melkKnop.addEventListener("click", function () {
@@ -85,7 +86,7 @@ serveerKnop.addEventListener("click", function () {
   }
   
   if (klantBudget.textContent === "budget 0") {
-      spelKnop.style.display = "inline"
+      startKnop.style.display = "inline"  // bron -> https://www.w3schools.com/jsref/prop_style_display.asp style code
       serveerKnop.style.display = "none"
     }
 })
