@@ -1,3 +1,5 @@
+// - Link naar me website -> https://pienvkk.github.io/Koffiegame/ <- Link naar me website -
+
 // Check Java Koppeling
 console.log("hallo wereld")
 
